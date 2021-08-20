@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 import Web3 from 'web3';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Row, Table, Modal, FloatingLabel, Form, Button} from 'react-bootstrap';
-import NavBar from "./components/navbar.js"
+import {Container, Row, Table, Modal, FloatingLabel, Form, Button, Card, Nav} from 'react-bootstrap';
 import InstaFarm from './data/instafarm-abi.json'
 import AddressToPool from './data/poolMapping.json'
 import ERC20ABI from './data/erc20-abi.json'
@@ -281,7 +280,23 @@ class App extends Component {
                     </Modal.Footer>
                 </Modal>
                 <Row>
-                    <NavBar connectedAccount={this.state.connectedAccount} />
+                    <Card className="bg-gradient">
+                        <Nav
+                            activeKey="/home"
+                            onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
+                        >
+                            <Nav.Item >
+                                <Nav.Link href="/home">InstaFarm</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item >{
+                                (this.state.connectedAccount !== "")?
+                                    <Nav.Link >{this.state.connectedAccount}</Nav.Link> :
+                                    <Nav.Link onClick={() => this.loadWeb3()} > "Connect Wallet" </Nav.Link> }
+
+                            </Nav.Item>
+                        </Nav>
+                        <Card.Body>Welcome to InstaFarm staking / Farming Pool</Card.Body>
+                    </Card>
                     <Table striped bordered hover>
                         <thead>
                         <tr>
