@@ -15,7 +15,7 @@ class Navbar extends Component {
                     </Nav.Item>
                     <Nav.Item >
                         <Nav.Link >
-                            {(this.props.connectedAccount != "")? this.props.connectedAccount : "Connect Wallet" }
+                            {(this.props.connectedAccount !== "")? this.props.connectedAccount : "Connect Wallet" }
                         </Nav.Link>
                     </Nav.Item>
                 </Nav>
